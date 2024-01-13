@@ -23,8 +23,8 @@ jobs:
       - name: Building Docker Images
         run: |
           docker image build -t $GITHUB_WORKFLOW:$GITHUB_RUN_ID . 
-          docker image tag $GITHUB_WORKFLOW:$GITHUB_RUN_ID nbharathkumara/$GITHUB_WORKFLOW:$GITHUB_RUN_ID
-          docker image tag $GITHUB_WORKFLOW:$GITHUB_RUN_ID nbharathkumara/$GITHUB_WORKFLOW:latest
+          docker image tag $GITHUB_WORKFLOW:$GITHUB_RUN_ID poojad321/$GITHUB_WORKFLOW:$GITHUB_RUN_ID
+          docker image tag $GITHUB_WORKFLOW:$GITHUB_RUN_ID poojad321/$GITHUB_WORKFLOW:latest
 
 # ~~~~~~~~~~~~~~~~~~~ Pushing Container Image ~~~~~~~~~~~~~~~~~~~
 
@@ -32,9 +32,9 @@ jobs:
         run: |
           docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
           docker images
-          docker image push nbharathkumara/$GITHUB_WORKFLOW:$GITHUB_RUN_ID
-          docker image push nbharathkumara/$GITHUB_WORKFLOW:latest
-          docker image rmi $GITHUB_WORKFLOW:$GITHUB_RUN_ID nbharathkumara/$GITHUB_WORKFLOW:$GITHUB_RUN_ID nbharathkumara/$GITHUB_WORKFLOW:latest
+          docker image push poojad321/$GITHUB_WORKFLOW:$GITHUB_RUN_ID
+          docker image push poojad321/$GITHUB_WORKFLOW:latest
+          docker image rmi $GITHUB_WORKFLOW:$GITHUB_RUN_ID poojad321/$GITHUB_WORKFLOW:$GITHUB_RUN_ID nbharathkumara/$GITHUB_WORKFLOW:latest
 
   Deploy:      
   
